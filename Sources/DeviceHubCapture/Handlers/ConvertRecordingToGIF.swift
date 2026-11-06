@@ -29,9 +29,8 @@ struct ConvertRecordingToGIF: CaptureHandler {
             pasteboard.writeObjects([item])
         }
 
-        try FileManager.default.removeItem(at: capture.url)
         pruneCache(keeping: gifURL)
-        return .consumed
+        return .passThrough
     }
 
     private func writeGIF(from movie: URL, to destinationURL: URL) async throws {
